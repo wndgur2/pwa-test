@@ -28,3 +28,16 @@ export function randomNotification() {
   new Notification(notifTitle, options)
   setTimeout(randomNotification, 7000)
 }
+
+// function registerServiceWorker() {
+//   navigator.serviceWorker
+//     .register('service-worker.js')
+//     .then((registration) => {
+//       return registration.pushManager.getSubscription().then(async (subscription) => {
+//         // registration part
+//       })
+//     })
+//     .then((subscription) => {
+//       // subscription part
+//     })
+// }

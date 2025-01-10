@@ -1,38 +1,22 @@
 import React from 'react'
-import logo from './logo.svg'
-import './App.css'
-import { randomNotification } from './utils/alert'
-
 function App() {
-  const enableNotification = () => {
-    Notification.requestPermission().then((result) => {
-      if (result === 'granted') {
-        console.log('Notification enabled')
-        randomNotification()
-      }
-    })
+  const requestNotificationPermission = () => {
+    Notification.requestPermission()
+      .then((result) => {
+        if (result === 'granted') {
+          console.log('Notification permission granted.')
+        } else {
+          console.warn('Notification permission denied.')
+        }
+      })
+      .catch((error) => console.error('Error requesting notification permission:', error))
   }
 
   return (
     <div className="App">
       <header className="App-header">
-        <img
-          src={logo}
-          className="App-logo"
-          alt="logo"
-        />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <button onClick={enableNotification}>Enable</button>
+        <h1>React Push Notifications</h1>
+        <button onClick={requestNotificationPermission}>Enable Notifications</button>
       </header>
     </div>
   )
